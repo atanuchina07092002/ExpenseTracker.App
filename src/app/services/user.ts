@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { userModel } from '../Models/userModel';
+import { userModel } from '../models/userModel';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { authResponseModel } from '../Models/authResponseModel';
+import { authResponseModel } from '../models/authResponseModel';
 
 @Injectable({
   providedIn: 'root',
@@ -16,20 +16,24 @@ export class User {
   currentStatus = this.currentSubject.asObservable();
 
   login(loginUser: userModel): Observable<authResponseModel> {
-    return this.http.post<authResponseModel>(this.baseUrl + 'login', loginUser).pipe(
-      tap((res) => {
-        localStorage.setItem('token', res.token);
-        this.currentSubject.next('user');
-      })
-    );
+    return this.http
+      .post<authResponseModel>(this.baseUrl + 'login', loginUser)
+      .pipe(
+        tap((res) => {
+          localStorage.setItem('token', res.token);
+          this.currentSubject.next('user');
+        })
+      );
   }
   register(loginUser: userModel): Observable<authResponseModel> {
-    return this.http.post<authResponseModel>(this.baseUrl + 'register', loginUser).pipe(
-      tap((res) => {
-        localStorage.setItem('token', res.token);
-        this.currentSubject.next('user');
-      })
-    );
+    return this.http
+      .post<authResponseModel>(this.baseUrl + 'register', loginUser)
+      .pipe(
+        tap((res) => {
+          localStorage.setItem('token', res.token);
+          this.currentSubject.next('user');
+        })
+      );
   }
 
   logout(): void {

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Transaction } from '../../services/transaction';
-import { TransactionModel } from '../../Models/transactionModel';
 import { Router } from '@angular/router';
+import { TransactionModel } from '../../models/transactionModel';
 
 @Component({
   selector: 'app-transaction-list',

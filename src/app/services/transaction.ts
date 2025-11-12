@@ -8,7 +8,8 @@ import { TransactionModel } from '../models/transactionModel';
 })
 export class Transaction {
   http = inject(HttpClient);
-  baseUrl = 'https://localhost:44395/api/Transactions/';
+  baseUrl =
+    'https://expensewebapi-dyfsf2eafabac9aq.canadacentral-01.azurewebsites.net/api/Transactions/';
   getAll(): Observable<TransactionModel[]> {
     return this.http.get<TransactionModel[]>(this.baseUrl + 'all');
   }
@@ -21,8 +22,14 @@ export class Transaction {
     return this.http.post<void>(this.baseUrl, transaction);
   }
 
-  updateById(id: number, transaction: TransactionModel): Observable<TransactionModel> {
-    return this.http.put<TransactionModel>(this.baseUrl + 'update/' + id, transaction);
+  updateById(
+    id: number,
+    transaction: TransactionModel
+  ): Observable<TransactionModel> {
+    return this.http.put<TransactionModel>(
+      this.baseUrl + 'update/' + id,
+      transaction
+    );
   }
 
   deleteById(id: number): Observable<void> {

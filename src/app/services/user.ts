@@ -11,7 +11,8 @@ import { authResponseModel } from '../models/authResponseModel';
 export class User {
   router = inject(Router);
   http = inject(HttpClient);
-  baseUrl = 'https://localhost:44395/api/Auth/';
+  baseUrl =
+    'https://expensewebapi-dyfsf2eafabac9aq.canadacentral-01.azurewebsites.net/api/Auth/';
   currentSubject = new BehaviorSubject<string | null>(null);
   currentStatus = this.currentSubject.asObservable();
 
